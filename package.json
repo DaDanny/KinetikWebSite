@@ -4,8 +4,6 @@
   "private": true,
   "description": "Description of your project",
   "scripts": {
-    "postinstall": "bower install",
-    "prestart": "npm install",
     "start": "NODE_ENV=production node ./server/www"
   },
   "dependencies": {
