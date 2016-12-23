@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "node ./server/www"
+    "start": "NODE_ENV=production node ./server/www"
   },
   "dependencies": {
     "async": "^1.5.2",
