@@ -1,0 +1,41 @@
+doctype html
+//if lt IE 7
+  html.no-js.lt-ie9.lt-ie8.lt-ie7(lang='en')
+//if IE 7
+  html.no-js.lt-ie9.lt-ie8(lang='en')
+//if IE 8
+  html.no-js.lt-ie9(lang='en')
+// [if gt IE 8] <!
+html.no-js(lang='en')
+    // <![endif]
+    head
+        include customHead
+        // bower:css
+        // endinject
+        // inject:css
+        // endinject
+    body(ng-app='freqCultureApp')
+        // Add your site or application content here
+        #site-wrapper
+            // Navbar
+            navbar
+            // <section-header></section-header>
+            // Mobile Side Menu
+            sidemenu
+            // Main Content
+            #site-content(ui-view='')
+            // Audio Bar
+            site-audio
+            script(src='https://connect.soundcloud.com/sdk/sdk-3.1.2.js')
+        site-footer
+        // bower:js
+        // endinject
+        // inject:js
+        // endinject
+        script.
+            !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+                    (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+                r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+            }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-86913725-1', 'auto');
+            ga('send', 'pageview');

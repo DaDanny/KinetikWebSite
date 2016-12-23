@@ -1,0 +1,94 @@
+//doctype html
+//html
+//  head
+//    title= title
+//    link(rel='stylesheet', href='styles/main.css')
+//  body
+//    block content
+doctype html
+//if lt IE 7
+  html.no-js.lt-ie9.lt-ie8.lt-ie7(lang='en')
+//if IE 7
+  html.no-js.lt-ie9.lt-ie8(lang='en')
+//if IE 8
+  html.no-js.lt-ie9(lang='en')
+// [if gt IE 8] <!
+html.no-js(lang='en')
+    // <![endif]
+    head
+        include customHead
+        // bower:css
+        link(rel='stylesheet', href='bower_components/bootstrap.css')
+        link(rel='stylesheet', href='bower_components/font-awesome.css')
+        link(rel='stylesheet', href='bower_components/plyr.css')
+        link(rel='stylesheet', href='bower_components/slick.css')
+        // endinject
+        // inject:css
+        link(rel='stylesheet', href='styles/ie8.css')
+        link(rel='stylesheet', href='styles/ie9.css')
+        link(rel='stylesheet', href='styles/main.css')
+        // endinject
+    body(ng-app='freqCultureApp')
+        // Add your site or application content here
+        #site-wrapper
+            // Navbar
+            navbar
+            // <section-header></section-header>
+            // Mobile Side Menu
+            sidemenu
+            // Main Content
+            #site-content(ui-view='')
+            // Audio Bar
+            site-audio
+            script(src='https://connect.soundcloud.com/sdk/sdk-3.1.2.js')
+        site-footer
+        // bower:js
+        <script src="bower_components/jquery.js"></script>
+        <script src="bower_components/angular.js"></script>
+        <script src="bower_components/angular-animate.js"></script>
+        <script src="bower_components/angular-cookies.js"></script>
+        <script src="bower_components/angular-resource.js"></script>
+        <script src="bower_components/angular-sanitize.js"></script>
+        <script src="bower_components/angular-slick.js"></script>
+        <script src="bower_components/angular-touch.js"></script>
+        <script src="bower_components/angular-ui-router.js"></script>
+        <script src="bower_components/aws-sdk.js"></script>
+        <script src="bower_components/bootstrap.js"></script>
+        <script src="bower_components/ev-emitter.js"></script>
+        <script src="bower_components/get-size.js"></script>
+        <script src="bower_components/index.min.js"></script>
+        <script src="bower_components/item.js"></script>
+        <script src="bower_components/masonry.pkgd.js"></script>
+        <script src="bower_components/matches-selector.js"></script>
+        <script src="bower_components/outlayer.js"></script>
+        <script src="bower_components/plangular.js"></script>
+        <script src="bower_components/plyr.js"></script>
+        <script src="bower_components/plyr.js"></script>
+        <script src="bower_components/slick.js"></script>
+        <script src="bower_components/utils.js"></script>
+        <!-- endinject -->
+        <!-- inject:js -->
+        <script src="app.js"></script>
+        <script src="scripts/services/content.service.js"></script>
+        <script src="scripts/directives/site-footer.directive.js"></script>
+        <script src="scripts/directives/site-audio.directive.js"></script>
+        <script src="scripts/directives/side-menu.directive.js"></script>
+        <script src="scripts/directives/section-header.directive.js"></script>
+        <script src="scripts/directives/navbar.directive.js"></script>
+        <script src="scripts/directives/image-shadow.js"></script>
+        <script src="scripts/directives/hamburger-menu.directive.js"></script>
+        <script src="scripts/directives/content-header.directive.js"></script>
+        <script src="scripts/directives/content-container.directive.js"></script>
+        <script src="scripts/routes/view-content.controller.js"></script>
+        <script src="scripts/routes/home.controller.js"></script>
+        <script src="scripts/config/routes.js"></script>
+        <script src="scripts/config/config.js"></script>
+        // endinject
+        // Google Analytics: change UA-XXXXX-X to be your site's ID.
+        script.
+            !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+                    (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+                r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+            }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-86913725-1', 'auto');
+            ga('send', 'pageview');
