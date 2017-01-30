@@ -11,21 +11,27 @@ var browserSync = require('browser-sync');
 var autoPrefixBrowserList = ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'];
 var BROWSER_SYNC_RELOAD_DELAY = 500;
 var gulpENV;
+var imagemin = require('gulp-imagemin');
+var plumber = require('gulp-plumber');
+var watch = require('gulp-watch');
 
 var paths = {
     base : './public/',
     scripts: ['./public/**/*.js', './public/scripts/**/*.js'],
     styles: ['./public/styles/*.css', './public/styles/*.scss'],
-    images : './public/images/**/*',
+    images : './public/images/*',
     index: './public/index.html',
     partials: ['public/**/*.html', 'public/scripts/directives/*.html', '!public/index.html'],
     distDev: './dist.dev',
     distProd: './dist.prod',
+    distStylesDev : './dist.dev/styles',
     distScriptsProd: './dist.prod/scripts',
     distStylesProd: './dist.prod/styles',
     scriptsDevServer: 'server/**/*.js',
     baseView : './render-views/baseView.jade',
-    renderViews: './render-views/'
+    renderViews: './render-views/',
+    iconPath : './public/*.png',
+    faviconPath : './public/favicon.ico'
 };
 
 var baseFiles = [
@@ -34,6 +40,7 @@ var baseFiles = [
     'crossdomain.xml',
     'humans.txt',
     'robots.txt',
+    'manifest.json',
     'sitemap.xml'
 ]
 
@@ -54,9 +61,16 @@ pipes.copyFiles = function() {
     var allBaseFiles = baseFiles.map(function(file) {
         return file = paths.base + file;
     })
+
     var destPath;
     if(gulpENV == 'production') destPath = paths.distProd;
     else destPath = paths.distDev;
+
+    gulp.src(paths.faviconPath)
+        .pipe(gulp.dest(destPath))
+
+    gulp.src(paths.iconPath)
+        .pipe(gulp.dest(destPath))
     return gulp.src(allBaseFiles,{base : paths.base})
         .pipe(gulp.dest(destPath))
 }
@@ -148,7 +162,7 @@ pipes.builtStylesDev = function() {
             cascade:  true
         }))
         .pipe(plugins.sourcemaps.write())
-        .pipe(gulp.dest(paths.distDev));
+        .pipe(gulp.dest(paths.distStylesDev));
 
 };
 
@@ -178,6 +192,9 @@ pipes.processedImagesDev = function() {
 
 pipes.processedImagesProd = function() {
     return gulp.src(paths.images)
+        //prevent pipe breaking caused by errors from gulp plugins
+        .pipe(plugins.plumber())
+        .pipe(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true }))
         .pipe(gulp.dest(paths.distProd + '/images/'));
 };
 
@@ -324,7 +341,7 @@ gulp.task('nodemon', function(cb) {
         })
 });
 
-gulp.task('browser-sync', ['nodemon'], function() {
+gulp.task('browser-sync', function() {
     browserSync({
         port : 1337,
         proxy : {
@@ -395,13 +412,20 @@ gulp.task('clean-build-app-dev', ['clean-dev'], pipes.builtAppDev);
 
 gulp.task('clean-build-app-prod', ['clean-prod'], pipes.builtAppProd);
 
-gulp.task('watch-dev', ['clean-build-app-dev', 'browser-sync'], function() {
+gulp.task('watch-dev', ['clean-build-app-dev', 'nodemon'], function() {
 
+    gulp.start('browser-sync');
 
     gulp.watch(paths.index, function() {
         return pipes.builtBaseViewDev()
             .pipe(browserSync.reload({stream: true}));
     });
+
+    watch('./public/images/*', function() {
+        console.log('images changed');
+        return pipes.processedImagesDev()
+            .pipe(browserSync.reload({stream: true}));
+    })
 
     gulp.watch(paths.scripts, function() {
         return pipes.builtAppScriptsDev()

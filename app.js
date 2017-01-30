@@ -7,6 +7,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var staticdir = process.env.NODE_ENV === 'production' ? 'dist.prod' : 'dist.dev'; // get static files dir
+var passport = require('passport');
 console.log('static: ', staticdir)
 
 var app = express();
@@ -16,12 +17,13 @@ app.set('views', path.join(__dirname, 'render-views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'render-views', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 require('./server/config/mongoose')();
+require('./server/config/passport')(passport);
 
 //var viewRender = require('./server/components/view-render');
 //

@@ -5,7 +5,6 @@ var nconf = require('nconf');
 var mongoose = require('mongoose');
 var path = require('path');
 var fs = require('fs');
-var SiteContent = require('./../models/site-content.model');
 
 module.exports = function() {
 

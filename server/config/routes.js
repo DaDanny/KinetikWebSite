@@ -11,8 +11,10 @@ module.exports = function(app) {
 
     //app.use('/api/account', require('./../routes/Account'));
     app.use('/api/siteContent', require('./../routes/siteContent'));
+    app.use('/api/user', require('./../routes/user'));
+    app.use('/api/signup', require('./../routes/signup'));
 
-    var baseRoutes = ['/', '/news', '/features', '/commentary', '/film', '/sound', '/about', '/admin','/:type(news|features|commentary|film|sound)/:slug'];
+    var baseRoutes = ['/', '/sound', '/film', '/fashion', '/culture', '/about', '/admin', '/dashboard', '/dashboard/*', '/:type(sound|film|fashion|culture)/:slug'];
     baseRoutes.forEach(function(path) {
         app.get(path, function(req, res, next) {
             viewRender.renderView(req, res, next);

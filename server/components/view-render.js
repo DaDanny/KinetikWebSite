@@ -7,7 +7,7 @@ var staticdir = process.env.NODE_ENV === 'production' ? 'dist.prod' : 'dist.dev'
 var siteContentCtrl = require('./../routes/siteContent/siteContent.controller');
 
 var baseMeta = {
-    title : "Frequency Culture",
+    title : "Kinetik Mag",
     description : "The world's #1 place for up to date news on anything counter culture. Raves, festivals, art and music.",
     image : 'https://s3-us-west-2.amazonaws.com/assets.frequencyculture/FC_Logo_min.png',
     shareUrl : 'FrequencyCulture.com'
