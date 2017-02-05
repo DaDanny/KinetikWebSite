@@ -9,5 +9,7 @@ router.post('/newUser', controller.newUser);
 router.get('/allUsers', controller.allUsers);
 router.put('/updateUser/:userId', controller.updateUser);
 router.delete('/:userId', controller.deleteUser);
+router.post('/loginUser', controller.loginUser);
+router.post('/loginViaToken', controller.loginViaToken);
 
 module.exports = router;

@@ -8,9 +8,9 @@ var siteContentCtrl = require('./../routes/siteContent/siteContent.controller');
 
 var baseMeta = {
     title : "Kinetik Mag",
-    description : "The world's #1 place for up to date news on anything counter culture. Raves, festivals, art and music.",
-    image : 'https://s3-us-west-2.amazonaws.com/assets.frequencyculture/FC_Logo_min.png',
-    shareUrl : 'FrequencyCulture.com'
+    description : "The world's #1 place for up to date news on anything counter culture, raves, festivals, art and music.",
+    image : 'https://s3-us-west-2.amazonaws.com/kinetik-images/white_background_logo-min.png',
+    shareUrl : 'KinetikMag.com'
 }
 
 function renderView(req, res, next) {
@@ -50,12 +50,12 @@ function trimString(string, charLimit) {
 }
 
 function buildShareUrl(content) {
-    return 'frequencyculture.com/' + content.contentType + '/' + content.url;
+    return 'kinetikmag.com/' + content.contentType + '/' + content.url;
 }
 
 function getImage(content) {
     if(!content.headerImage) {
-        return 'https://s3-us-west-2.amazonaws.com/assets.frequencyculture/FC_Logo_min.png';
+        return 'https://s3-us-west-2.amazonaws.com/kinetik-images/white_background_logo-min.png';
     } else return content.headerImage
 }
 
