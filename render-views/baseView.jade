@@ -31,12 +31,15 @@ html.no-js(lang='en')
         include customHead
 
         //- bower:css
-        link(rel="stylesheet", href="/styles/vendor.min.css")
+        link(rel="stylesheet", href="/bower_components/bootstrap.css")
+        link(rel="stylesheet", href="/bower_components/font-awesome.css")
+        link(rel="stylesheet", href="/bower_components/slick.css")
+        link(rel="stylesheet", href="/bower_components/textAngular.css")
         //- endinject
         //- inject:css
-        link(rel="stylesheet", href="/styles/ie8.min.css")
-        link(rel="stylesheet", href="/styles/ie9.min.css")
-        link(rel="stylesheet", href="/styles/main.min.css")
+        link(rel="stylesheet", href="/styles/ie8.css")
+        link(rel="stylesheet", href="/styles/ie9.css")
+        link(rel="stylesheet", href="/styles/main.css")
         //- endinject
         style(type="text/css").
             .landing-container {
@@ -198,10 +201,51 @@ html.no-js(lang='en')
 
 
         //- bower:js
-        script(src="/scripts/vendor.min.js")
+        script(src="/bower_components/jquery.js")
+        script(src="/bower_components/angular.js")
+        script(src="/bower_components/angular-animate.js")
+        script(src="/bower_components/angular-cookies.js")
+        script(src="/bower_components/angular-local-storage.js")
+        script(src="/bower_components/angular-resource.js")
+        script(src="/bower_components/angular-slick.js")
+        script(src="/bower_components/angular-touch.js")
+        script(src="/bower_components/angular-ui-router.js")
+        script(src="/bower_components/bootstrap.js")
+        script(src="/bower_components/index.min.js")
+        script(src="/bower_components/plangular.js")
+        script(src="/bower_components/slick.js")
+        script(src="/bower_components/textAngular-rangy.min.js")
+        script(src="/bower_components/textAngular-sanitize.js")
+        script(src="/bower_components/textAngular.js")
+        script(src="/bower_components/textAngularSetup.js")
         //- endinject
         //- inject:js
-        script(src="/scripts/app.min.js")
+        script(src="/app.js")
+        script(src="/scripts/services/user.service.js")
+        script(src="/scripts/services/signup.service.js")
+        script(src="/scripts/services/modal.service.js")
+        script(src="/scripts/services/content.service.js")
+        script(src="/scripts/services/admin.service.js")
+        script(src="/scripts/directives/site-modal.directive.js")
+        script(src="/scripts/directives/site-footer.directive.js")
+        script(src="/scripts/directives/site-audio.directive.js")
+        script(src="/scripts/directives/side-menu.directive.js")
+        script(src="/scripts/directives/section-header.directive.js")
+        script(src="/scripts/directives/navbar.directive.js")
+        script(src="/scripts/directives/loginModal.controller.js")
+        script(src="/scripts/directives/image-shadow.js")
+        script(src="/scripts/directives/hamburger-menu.directive.js")
+        script(src="/scripts/directives/content-header.directive.js")
+        script(src="/scripts/directives/content-container.directive.js")
+        script(src="/scripts/routes/view-content.controller.js")
+        script(src="/scripts/routes/main-section.controller.js")
+        script(src="/scripts/routes/home.controller.js")
+        script(src="/scripts/routes/dashboard.controller.js")
+        script(src="/scripts/routes/dashboard.content.controller.js")
+        script(src="/scripts/routes/admin.controller.js")
+        script(src="/scripts/config/routes.js")
+        script(src="/scripts/config/config.js")
+        script(src="/scripts/config/appRun.js")
         //- endinject
         script.
             !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
